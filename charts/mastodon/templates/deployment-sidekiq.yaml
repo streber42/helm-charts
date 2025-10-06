@@ -5,6 +5,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "mastodon.fullname" $context }}-sidekiq-{{ .name }}
+  namespace: {{ $context.Release.Namespace | quote }}
   labels:
     {{- include "mastodon.labels" $context | trim | nindent 4 }}
     {{- include "mastodon.userLabels" $context | trim | nindent 4 }}

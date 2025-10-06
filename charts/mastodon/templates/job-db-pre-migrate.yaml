@@ -3,6 +3,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ include "mastodon.fullname" . }}-db-pre-migrate
+  namespace: {{ .Release.Namespace | quote }}
   labels:
     {{- include "mastodon.labels" . | nindent 4 }}
     {{- include "mastodon.userLabels" . | trim | nindent 4 }}

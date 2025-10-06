@@ -121,7 +121,7 @@ Create the name of the service account to use.
 Main ConfigMap name.
 */}}
 {{- define "mastodon.configMapName" -}}
-{{- printf "%s-env" (include "mastodon.fullname" .) }}
+{{- printf "%s-default" (include "mastodon.fullname" .) }}
 {{- end }}
 
 {{/*

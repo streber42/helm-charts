@@ -17,6 +17,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}-streaming
+  namespace: {{ .Release.Namespace | quote }}
   labels:
     {{- include "mastodon.labels" . | nindent 4 }}
     {{- include "mastodon.userLabels" . | trim | nindent 4 }}

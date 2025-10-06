@@ -10,9 +10,9 @@ Mastodon general info.
 TZ: {{ .Values.timezone | quote }}
 {{- end }}
 {{- with .Values.mastodon }}
-LOCAL_DOMAIN: {{ .local_domain | quote }}
-{{- if .web_domain }}
-WEB_DOMAIN: {{ .web_domain | quote }}
+LOCAL_DOMAIN: {{ .localDomain | quote }}
+{{- if .webDomain }}
+WEB_DOMAIN: {{ .webDomain | quote }}
 {{- end }}
 {{- if .locale }}
 DEFAULT_LOCALE: {{ .locale | quote }}
@@ -42,8 +42,8 @@ TRUSTED_PROXY_IP: {{ .trustedProxyIp | quote }}
 {{- if .deepl.enabled }}
 DEEPL_PLAN: {{ .deepl.plan | quote }}
 {{- end }}
-{{- if .hcaptcha.enabled | quote }}
-HCAPTCHA_SITE_KEY: {{ .hcaptcha.siteId| quote }}
+{{- if .hcaptcha.enabled }}
+HCAPTCHA_SITE_KEY: {{ .hcaptcha.siteId | quote }}
 {{- end }}
 {{- end }}
 {{- end }}
@@ -56,9 +56,9 @@ Mastodon secret definitions
 SECRET_KEY_BASE: {{ required "secretKeyBase is required" (.secretKeyBase | b64enc | quote) }}
 VAPID_PRIVATE_KEY: {{ required "vapidPrivateKey is required" (.vapidPrivateKey | b64enc | quote) }}
 VAPID_PUBLIC_KEY: {{ required "vapidPublicKey is required" (.vapidPublicKey | b64enc | quote) }}
-ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: {{ required "arPrimaryKey is required" (.arPrimaryKey | b64enc | quote) }}
-ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: {{ required "arDeterministicKey is required" (.arDeterministicKey | b64enc | quote) }}
-ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: {{ required "arKeyDerivationSalt is required" (.arKeyDerivationSalt | b64enc | quote) }}
+ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: {{ required "arPrimaryKey is required" (.arPrimaryKey | quote) }}
+ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: {{ required "arDeterministicKey is required" (.arDeterministicKey | quote) }}
+ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: {{ required "arKeyDerivationSalt is required" (.arKeyDerivationSalt | quote) }}
 {{- end }}
 {{- end }}
 
@@ -171,8 +171,8 @@ S3_PERMISSION: {{ .permission | quote }}
 {{- if .region }}
 S3_REGION: {{ .region | quote }}
 {{- end }}
-{{- if .alias_host }}
-S3_ALIAS_HOST: {{ .alias_host | quote }}
+{{- if .aliasHost }}
+S3_ALIAS_HOST: {{ .aliasHost | quote }}
 {{- end }}
 {{- if .multipart_threshold }}
 S3_MULTIPART_THRESHOLD: {{ .multipart_threshold | quote }}

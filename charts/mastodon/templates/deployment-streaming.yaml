@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "mastodon.fullname" . }}-streaming
+  namespace: {{ .Release.Namespace | quote }}
   labels:
     {{- include "mastodon.labels" . | trim | nindent 4 }}
     {{- include "mastodon.userLabels" . | trim | nindent 4 }}
